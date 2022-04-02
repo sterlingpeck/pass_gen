@@ -24,15 +24,10 @@ function generatePassword() {
   let userInput = []
   const chars = window.prompt("How many characters would you like your password to be?");
 
-  if (chars > 7 && chars < 129) {
-    generatePassword = true
-  } 
-
-    else { 
-    
+  if (chars < 7 || chars > 129) {
     alert("Character length does not meet requirements. Must be greater than 8 characters and less than 128 characters. Try again"); 
-    return passCriteria();
-    }
+    return;
+    } 
   
   if (confirm("Would you like numbers included in your password?")) {
     userInput.push(numberChars);
@@ -49,10 +44,21 @@ function generatePassword() {
   if (confirm("Would you like special characters included in your password?")) {
     userInput.push(specialChars);
   }
-  console.log (userInput);
-  return true;
+ 
+  userInput = userInput.join(",")
+  console.log(userInput)
+
+  let generatedPass = ""
+
+  for (var i = 0; i < chars; i++) {
+    const randomNumb = Math.floor(Math.random() * userInput.length);
+    generatedPass = generatedPass + userInput[randomNumb];
+  }
+
+return generatedPass;
 
 }
+
 
 
 
