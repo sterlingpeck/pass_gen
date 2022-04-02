@@ -20,38 +20,39 @@ function writePassword() {
 generateBtn.addEventListener("click", writePassword);
 
 
-function passCriteria() {
-  userInput = [];
+function generatePassword() {
+  let userInput = []
+  const chars = window.prompt("How many characters would you like your password to be?");
 
-  userLengthInput = parseInt(prompt("How many characters would you like your password to be?"));
+  if (chars > 7 && chars < 129) {
+    generatePassword = true
+  } 
 
-  if (userLengthInput > 7 && userLengthInput < 129) {
-    generatedPassword = true
-
-   else alert("Character length does not meet requirements. Must be greater than 8 characters and less than 128 characters. Try again");
-  }
+    else { 
+    
+    alert("Character length does not meet requirements. Must be greater than 8 characters and less than 128 characters. Try again"); 
+    return passCriteria();
+    }
   
-  if (confirm("Woud you like numbers included in your password?")) {
-    userInput = userInput += (numberChars);
+  if (confirm("Would you like numbers included in your password?")) {
+    userInput.push(numberChars);
   }
 
-  if (confirm("Woud you like uppercase characters included in your password?")) {
-    userInput = userInput += (upperCaseChars);
+  if (confirm("Would you like uppercase characters included in your password?")) {
+    userInput.push(upperCaseChars);
   }
 
-  if (confirm("Woud you like lowercase characters included in your password?")) {
-    userInput = userInput += (lowerCaseChars);
+  if (confirm("Would you like lowercase characters included in your password?")) {
+    userInput.push(lowerCaseChars);
   }
 
-  if (confirm("Woud you like special characters included in your password?")) {
-    userInput = userInput += (specialChars);
+  if (confirm("Would you like special characters included in your password?")) {
+    userInput.push(specialChars);
   }
-
+  console.log (userInput);
   return true;
 
 }
-
-
 
 
 
